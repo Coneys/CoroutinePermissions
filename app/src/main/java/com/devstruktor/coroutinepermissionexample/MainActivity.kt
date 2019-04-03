@@ -14,8 +14,23 @@ class MainActivity : AppCompatActivity() {
         val permissions = CoroutinePermissions(this)
         GlobalScope.launch {
 
-            val result = permissions.requestExternalStorageRead()
-            println("Result $result")
+            launch {
+                val result = permissions.requestExternalStorageRead()
+                println(result)
+            }
+
+            launch {
+                val result2 = permissions.requestExternalStorageRead()
+                println(result2)
+            }
+
+
+            launch {
+                val result3 = permissions.requestExternalStorageRead()
+                println(result3)
+
+            }
+
         }
 
     }

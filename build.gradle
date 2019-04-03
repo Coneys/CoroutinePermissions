@@ -27,7 +27,7 @@ ext {
     publishedGroupId = 'com.devstruktor.coroutinePermissions'
     artifact = 'coroutinePermissions'
     libraryName = 'CoroutinePermissions'
-    libraryVersion = '0.2.0'
+    libraryVersion = '0.3.0'
 
     libraryDescription = 'Coroutine wrapper for RxPermissions'
 
