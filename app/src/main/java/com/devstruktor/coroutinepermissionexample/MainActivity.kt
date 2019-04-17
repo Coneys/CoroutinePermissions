@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val app = this.application
         val permissions = CoroutinePermissions(this)
         GlobalScope.launch {
 
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
                 println(result)
             }
 
-            launch {
+          /*  launch {
                 val result2 = permissions.requestExternalStorageRead()
                 println(result2)
             }
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 val result3 = permissions.requestExternalStorageRead()
                 println(result3)
 
-            }
+            }*/
 
         }
 

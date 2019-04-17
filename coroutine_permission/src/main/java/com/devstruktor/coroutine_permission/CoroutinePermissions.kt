@@ -1,7 +1,10 @@
 package com.devstruktor.coroutine_permission
 
 import android.Manifest
+import android.app.Application
 import android.content.Context
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.nabinbhandari.android.permissions.Permissions
@@ -14,6 +17,7 @@ class CoroutinePermissions internal constructor(private val context: Context) {
 
     constructor(activity: FragmentActivity) : this(activity as Context)
     constructor(fragment: Fragment) : this(fragment.requireContext())
+    constructor(application: Application) : this(application.applicationContext)
 
     private val currentRequests = ArrayList<CoroutinePermissionHandler>()
 
@@ -46,11 +50,30 @@ class CoroutinePermissions internal constructor(private val context: Context) {
 
             val handler = CoroutinePermissionHandler(permission, continuation) {
                 currentRequests.remove(it)
+                if(currentRequests.isEmpty()){
+                    if (context is FragmentActivity) {
+                        context.apply {
+                            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                        }
+
+                    }
+                }
             }
 
             try {
+
+                if (context is FragmentActivity) {
+                    context.apply {
+                        requestedOrientation = if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                        } else ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                    }
+
+                }
+
                 currentRequests.add(handler)
                 Permissions.check(context, permission, null, handler)
+
             } catch (t: Throwable) {
                 t.printStackTrace()
                 currentRequests.remove(handler)
