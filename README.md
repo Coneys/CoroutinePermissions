@@ -40,7 +40,23 @@ class CoroutinePermissions internal constructor(private val context: Context) :
 
 ```
  launch {
-                val result = permissions.requestExternalStorageRead()
-                println(result)
-            }
+         val result:Boolean = permissions.requestExternalStorageRead()
+}
+```
+## Adding library to your project 
+
+Add it to your main build.gradle:
+```gradle
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+and into module build.gradle:
+
+```gradle
+dependencies {
+    implementation "com.github.coneys:coroutinePermissions:{latest version}"
+}
 ```
