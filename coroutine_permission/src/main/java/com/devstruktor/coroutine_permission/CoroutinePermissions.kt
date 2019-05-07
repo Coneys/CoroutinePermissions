@@ -13,7 +13,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
 
-class CoroutinePermissions internal constructor(private val context: Context) :
+internal class CoroutinePermissions internal constructor(private val context: Context) :
     SuspendPermissions {
 
     internal constructor(activity: FragmentActivity) : this(activity as Context)

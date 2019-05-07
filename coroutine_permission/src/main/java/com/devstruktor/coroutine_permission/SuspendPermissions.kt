@@ -19,9 +19,10 @@ interface SuspendPermissions {
 
     companion object {
 
-        fun from(activity: FragmentActivity) = CoroutinePermissions(activity as Context)
-        fun from(fragment: Fragment) = CoroutinePermissions(fragment.requireContext())
-        fun from(application: Application) = CoroutinePermissions(application.applicationContext)
+        fun from(activity: FragmentActivity):SuspendPermissions = CoroutinePermissions(activity as Context)
+        fun from(fragment: Fragment):SuspendPermissions = CoroutinePermissions(fragment.requireContext())
+        fun from(application: Application):SuspendPermissions = CoroutinePermissions(application.applicationContext)
+
         fun disableLogging() {
             Permissions.disableLogging()
         }
