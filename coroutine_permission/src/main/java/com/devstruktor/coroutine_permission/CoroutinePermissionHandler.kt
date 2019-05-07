@@ -26,17 +26,20 @@ class CoroutinePermissionHandler(
 
     override fun onGranted() {
         continuations.forEach { it.resume(true) }
+        continuations.clear()
         onResult(this)
     }
 
     override fun onDenied(context: Context?, deniedPermissions: ArrayList<String>?) {
         super.onDenied(context, deniedPermissions)
         continuations.forEach { it.resume(false) }
+        continuations.clear()
         onResult(this)
     }
 
     override fun onBlocked(context: Context?, blockedList: ArrayList<String>?): Boolean {
         continuations.forEach { it.resume(false) }
+        continuations.clear()
         onResult(this)
         return super.onBlocked(context, blockedList)
     }
@@ -48,6 +51,7 @@ class CoroutinePermissionHandler(
     ) {
         onResult(this)
         continuations.forEach { it.resume(false) }
+        continuations.clear()
         super.onJustBlocked(context, justBlockedList, deniedPermissions)
     }
 }
