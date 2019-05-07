@@ -7,7 +7,7 @@ import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.coroutines.resume
 
-class CoroutinePermissionHandler(
+internal class CoroutinePermissionHandler(
     val permission: String,
     cancellableContinuation: CancellableContinuation<Boolean>,
     private val onResult: (CoroutinePermissionHandler) -> Unit

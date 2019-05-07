@@ -2,7 +2,7 @@ package com.devstruktor.coroutinepermissionexample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.devstruktor.coroutine_permission.CoroutinePermissions
+import com.devstruktor.coroutine_permission.SuspendPermissions
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val app = this.application
-        val permissions = CoroutinePermissions(this)
+        val permissions = SuspendPermissions.from(this)
         GlobalScope.launch {
 
             launch {
@@ -20,17 +20,17 @@ class MainActivity : AppCompatActivity() {
                 println(result)
             }
 
-          /*  launch {
-                val result2 = permissions.requestExternalStorageRead()
-                println(result2)
-            }
+            /*  launch {
+                  val result2 = permissions.requestExternalStorageRead()
+                  println(result2)
+              }
 
 
-            launch {
-                val result3 = permissions.requestExternalStorageRead()
-                println(result3)
+              launch {
+                  val result3 = permissions.requestExternalStorageRead()
+                  println(result3)
 
-            }*/
+              }*/
 
         }
 

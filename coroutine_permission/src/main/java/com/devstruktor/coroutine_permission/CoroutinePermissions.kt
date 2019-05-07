@@ -16,16 +16,14 @@ import kotlinx.coroutines.withContext
 class CoroutinePermissions internal constructor(private val context: Context) :
     SuspendPermissions {
 
-    constructor(activity: FragmentActivity) : this(activity as Context)
-    constructor(fragment: Fragment) : this(fragment.requireContext())
-    constructor(application: Application) : this(application.applicationContext)
+    internal constructor(activity: FragmentActivity) : this(activity as Context)
+    internal constructor(fragment: Fragment) : this(fragment.requireContext())
+    internal constructor(application: Application) : this(application.applicationContext)
 
     private val currentRequests = ArrayList<CoroutinePermissionHandler>()
 
     companion object {
-        fun disableLogging() {
-            Permissions.disableLogging()
-        }
+
     }
 
 
@@ -51,26 +49,14 @@ class CoroutinePermissions internal constructor(private val context: Context) :
 
             val handler = CoroutinePermissionHandler(permission, continuation) {
                 currentRequests.remove(it)
-                if(currentRequests.isEmpty()){
-                    if (context is FragmentActivity) {
-                        context.apply {
-                            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-                        }
-
-                    }
+                if (currentRequests.isEmpty()) {
+                    unlockActivityRotation(context)
                 }
             }
 
             try {
 
-                if (context is FragmentActivity) {
-                    context.apply {
-                        requestedOrientation = if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                        } else ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-                    }
-
-                }
+                lockActivityRotation(context)
 
                 currentRequests.add(handler)
                 Permissions.check(context, permission, null, handler)
@@ -81,6 +67,24 @@ class CoroutinePermissions internal constructor(private val context: Context) :
                 continuation.cancel(t)
             }
 
+        }
+    }
+
+    private fun lockActivityRotation(context: Context) {
+        if (context is FragmentActivity) {
+            context.apply {
+                requestedOrientation = if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                } else ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            }
+        }
+    }
+
+    private fun unlockActivityRotation(context: Context) {
+        if (context is FragmentActivity) {
+            context.apply {
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            }
         }
     }
 
