@@ -27,9 +27,9 @@ ext {
     publishedGroupId = 'com.devstruktor.coroutinePermissions'
     artifact = 'coroutinePermissions'
     libraryName = 'CoroutinePermissions'
-    libraryVersion = '0.3.0'
+    libraryVersion = '1.0.0'
 
-    libraryDescription = 'Coroutine wrapper for RxPermissions'
+    libraryDescription = 'Coroutine wrapper for Android permissions'
 
     siteUrl = 'https://github.com/Coneys/CoroutinePermissions'
     gitUrl = 'https://github.com/Coneys/CoroutinePermissions.git'

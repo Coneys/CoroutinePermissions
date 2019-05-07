@@ -13,7 +13,8 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
 
-class CoroutinePermissions internal constructor(private val context: Context) {
+class CoroutinePermissions internal constructor(private val context: Context) :
+    SuspendPermissions {
 
     constructor(activity: FragmentActivity) : this(activity as Context)
     constructor(fragment: Fragment) : this(fragment.requireContext())
@@ -28,7 +29,7 @@ class CoroutinePermissions internal constructor(private val context: Context) {
     }
 
 
-    suspend fun request(permission: String): Boolean {
+    override suspend fun request(permission: String): Boolean {
 
 
         return withContext(Dispatchers.Main) {
@@ -89,9 +90,9 @@ class CoroutinePermissions internal constructor(private val context: Context) {
         }
     }
 
-    suspend fun requestLocation() = request(Manifest.permission.ACCESS_FINE_LOCATION)
-    suspend fun requestCamera() = request(Manifest.permission.CAMERA)
-    suspend fun requestExternalStorageRead() = request(Manifest.permission.READ_EXTERNAL_STORAGE)
-    suspend fun requestExternalStorageWrite() = request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    override suspend fun requestLocation() = request(Manifest.permission.ACCESS_FINE_LOCATION)
+    override suspend fun requestCamera() = request(Manifest.permission.CAMERA)
+    override suspend fun requestExternalStorageRead() = request(Manifest.permission.READ_EXTERNAL_STORAGE)
+    override suspend fun requestExternalStorageWrite() = request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
 }
