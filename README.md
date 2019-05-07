@@ -24,15 +24,22 @@ interface SuspendPermissions {
 
 ## Usage
 
-1. Permissions instance can by creating CoroutinePermissions instance:
+1. Permissions instance can created by one of factory functions:
 
 ```
-class CoroutinePermissions internal constructor(private val context: Context) :
-    SuspendPermissions {
+interface SuspendPermissions {
+   
+    ...
 
-    constructor(activity: FragmentActivity) : this(activity as Context)
-    constructor(fragment: Fragment) : this(fragment.requireContext())
-    constructor(application: Application) : this(application.applicationContext)
+    companion object {
+
+        fun from(activity: FragmentActivity):SuspendPermissions = CoroutinePermissions(activity as Context)
+        fun from(fragment: Fragment):SuspendPermissions = CoroutinePermissions(fragment.requireContext())
+        fun from(application: Application):SuspendPermissions = CoroutinePermissions(application.applicationContext)
+
+        ...
+
+    }
 
 }
 ```
@@ -43,6 +50,12 @@ class CoroutinePermissions internal constructor(private val context: Context) :
          val result:Boolean = permissions.requestExternalStorageRead()
 }
 ```
+
+3. If you want to disable logging, just call:
+```
+SuspendPermissions.disableLogging()
+```
+
 ## Adding library to your project 
 
 Add it to your main build.gradle:
