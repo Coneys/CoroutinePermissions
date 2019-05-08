@@ -29,6 +29,7 @@ interface SuspendPermissions {
 ## OnActivity 
 Activity version implements SuspendPermissions and SuspendActivityPermissions interface
 
+```
 interface SuspendActivityPermissions: SuspendPermissions {
 
     suspend fun getRequestResult(permission: String): PermissionRequestState
@@ -41,9 +42,8 @@ interface SuspendActivityPermissions: SuspendPermissions {
 
     suspend fun getRequestExternalStorageWrite(): PermissionRequestState
 
-
 }
-
+```
 
 # Usage
 
