@@ -2,6 +2,7 @@ package com.devstruktor.coroutine_permission
 
 import android.content.Context
 import com.nabinbhandari.android.permissions.PermissionHandler
+import com.nabinbhandari.android.permissions.Permissions
 import kotlinx.coroutines.CancellableContinuation
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
@@ -14,14 +15,20 @@ internal class CoroutinePermissionHandler(
 ) :
     PermissionHandler() {
 
+
     private val continuations = CopyOnWriteArrayList<CancellableContinuation<Boolean>>()
 
     init {
         continuations.add(cancellableContinuation)
     }
 
+    override fun onActivityRecreation() {
+        Permissions.log("Activity recreation")
+    }
+
     fun addAdditionalContinuation(cancellableContinuation: CancellableContinuation<Boolean>) {
         continuations.add(cancellableContinuation)
+
     }
 
     override fun onGranted() {
@@ -53,5 +60,11 @@ internal class CoroutinePermissionHandler(
         continuations.forEach { it.resume(false) }
         continuations.clear()
         super.onJustBlocked(context, justBlockedList, deniedPermissions)
+    }
+
+    fun removeListeners(): Int {
+        val size = continuations.size
+        continuations.clear()
+        return size
     }
 }
