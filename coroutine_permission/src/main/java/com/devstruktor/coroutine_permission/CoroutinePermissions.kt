@@ -6,7 +6,7 @@ import com.devstruktor.coroutine_permission.activityPermission.SuspendActivityPe
 import com.devstruktor.coroutine_permission.staticPermission.CoroutineStaticPermissions
 import com.devstruktor.coroutine_permission.staticPermission.SuspendPermissions
 import com.devstruktor.initalizer.PermissionsInitProvider
-import com.nabinbhandari.android.permissions.Permissions
+import com.devstruktor.nabinbhandariPermissions.Permissions
 
 object CoroutinePermissions {
     fun getInstance(): SuspendPermissions {
@@ -14,7 +14,7 @@ object CoroutinePermissions {
     }
 
     fun createInstanceForActivity(fragmentActivity: FragmentActivity): SuspendActivityPermissions {
-        return CoroutineActivityPermissions(fragmentActivity,fragmentActivity.lifecycle)
+        return CoroutineActivityPermissions(fragmentActivity, fragmentActivity.lifecycle)
     }
 
 

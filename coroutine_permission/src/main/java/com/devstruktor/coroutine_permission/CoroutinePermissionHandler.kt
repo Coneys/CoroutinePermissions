@@ -1,8 +1,8 @@
 package com.devstruktor.coroutine_permission
 
 import android.content.Context
-import com.nabinbhandari.android.permissions.PermissionHandler
-import com.nabinbhandari.android.permissions.Permissions
+import com.devstruktor.nabinbhandariPermissions.PermissionHandler
+import com.devstruktor.nabinbhandariPermissions.Permissions
 import kotlinx.coroutines.CancellableContinuation
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
@@ -37,14 +37,14 @@ internal class CoroutinePermissionHandler(
         onResult(this)
     }
 
-    override fun onDenied(context: Context?, deniedPermissions: ArrayList<String>?) {
+    override fun onDenied(context: Context, deniedPermissions: ArrayList<String>) {
         super.onDenied(context, deniedPermissions)
         continuations.forEach { it.resume(false) }
         continuations.clear()
         onResult(this)
     }
 
-    override fun onBlocked(context: Context?, blockedList: ArrayList<String>?): Boolean {
+    override fun onBlocked(context: Context, blockedList: ArrayList<String>): Boolean {
         continuations.forEach { it.resume(false) }
         continuations.clear()
         onResult(this)
@@ -52,9 +52,9 @@ internal class CoroutinePermissionHandler(
     }
 
     override fun onJustBlocked(
-        context: Context?,
-        justBlockedList: ArrayList<String>?,
-        deniedPermissions: ArrayList<String>?
+        context: Context,
+        justBlockedList: ArrayList<String>,
+        deniedPermissions: ArrayList<String>
     ) {
         onResult(this)
         continuations.forEach { it.resume(false) }

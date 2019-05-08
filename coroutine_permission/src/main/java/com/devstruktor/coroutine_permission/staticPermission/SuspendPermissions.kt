@@ -1,6 +1,5 @@
 package com.devstruktor.coroutine_permission.staticPermission
 
-import com.nabinbhandari.android.permissions.Permissions
 
 interface SuspendPermissions {
     suspend fun request(permission: String): Boolean

@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.devstruktor.PermissionRequestState
 import com.devstruktor.coroutine_permission.staticPermission.CoroutineStaticPermissions
-import com.nabinbhandari.android.permissions.Permissions
+import com.devstruktor.nabinbhandariPermissions.Permissions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
