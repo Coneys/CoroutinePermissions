@@ -12,7 +12,8 @@ object SomeStatic {
     lateinit var application: Application
     fun test() {
         GlobalScope.launch {
-            val result = CoroutinePermissions.getInstance().requestExternalStorageRead()
+            val permissions = CoroutinePermissions.getInstance()
+            val result = permissions.requestExternalStorageRead()
             withContext(Dispatchers.Main){
                 Toast.makeText(
                     application,

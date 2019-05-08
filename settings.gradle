@@ -1,1 +1,1 @@
-include ':app', ':coroutine_permission', ':permissions-release'
+include ':app', ':coroutine_permission'
