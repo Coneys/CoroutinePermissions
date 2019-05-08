@@ -167,3 +167,5 @@ dependencies {
     See the License for the specific language governing permissions and
     limitations under the License.
 
+# Additional info
+Library was based on  [Android-Permissions](https://github.com/nabinbhandari/Android-Permissions) from Nabin Bhandari, but to make it work with coroutines I had to make some changes, so I added his code to library directly. 
