@@ -43,7 +43,7 @@ internal class PermissionsActivity : Activity() {
 
 
         allPermissions = intent.getSerializableExtra(EXTRA_PERMISSIONS) as ArrayList<String>
-        options = intent.getSerializableExtra(EXTRA_OPTIONS) as Permissions.Options
+        options = intent.getSerializableExtra(EXTRA_OPTIONS) as? Permissions.Options
         if (options == null) {
             options = Permissions.Options()
         }
