@@ -129,9 +129,9 @@ internal object Permissions {
                     .putExtra(PermissionsActivity.EXTRA_PERMISSIONS, permissionsList)
                     .putExtra(PermissionsActivity.EXTRA_RATIONALE, rationale)
                     .putExtra(PermissionsActivity.EXTRA_OPTIONS, options)
-                if (options != null && options.createNewTask) {
+
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
+
                 context.startActivity(intent)
             }
         }
