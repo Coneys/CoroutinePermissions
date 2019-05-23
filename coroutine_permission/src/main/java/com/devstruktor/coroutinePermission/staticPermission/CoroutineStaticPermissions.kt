@@ -1,8 +1,8 @@
-package com.devstruktor.coroutine_permission.staticPermission
+package com.devstruktor.coroutinePermission.staticPermission
 
 import android.Manifest
 import android.content.Context
-import com.devstruktor.coroutine_permission.CoroutinePermissionHandler
+import com.devstruktor.coroutinePermission.CoroutinePermissionHandler
 import com.devstruktor.nabinbhandariPermissions.Permissions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine

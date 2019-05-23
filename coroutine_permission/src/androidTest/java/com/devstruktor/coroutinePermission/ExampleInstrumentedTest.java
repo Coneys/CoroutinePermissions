@@ -1,4 +1,4 @@
-package com.devstruktor.coroutine_permission;
+package com.devstruktor.coroutinePermission;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

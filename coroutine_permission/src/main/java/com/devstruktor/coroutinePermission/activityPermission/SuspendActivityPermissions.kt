@@ -1,7 +1,7 @@
-package com.devstruktor.coroutine_permission.activityPermission
+package com.devstruktor.coroutinePermission.activityPermission
 
 import com.devstruktor.PermissionRequestState
-import com.devstruktor.coroutine_permission.staticPermission.SuspendPermissions
+import com.devstruktor.coroutinePermission.staticPermission.SuspendPermissions
 
 interface SuspendActivityPermissions: SuspendPermissions {
 

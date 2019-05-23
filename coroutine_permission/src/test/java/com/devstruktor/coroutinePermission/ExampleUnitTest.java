@@ -1,4 +1,4 @@
-package com.devstruktor.coroutine_permission;
+package com.devstruktor.coroutinePermission;
 
 import org.junit.Test;
 

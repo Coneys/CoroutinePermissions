@@ -2,7 +2,7 @@ package com.devstruktor.coroutinepermissionexample
 
 import android.app.Application
 import android.widget.Toast
-import com.devstruktor.coroutine_permission.CoroutinePermissions
+import com.devstruktor.coroutinePermission.CoroutinePermissions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

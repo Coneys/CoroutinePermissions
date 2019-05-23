@@ -1,4 +1,4 @@
-package com.devstruktor.coroutine_permission.staticPermission
+package com.devstruktor.coroutinePermission.staticPermission
 
 
 interface SuspendPermissions {

@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.devstruktor.PermissionRequestState
-import com.devstruktor.coroutine_permission.CoroutinePermissions
-import com.devstruktor.coroutine_permission.staticPermission.SuspendPermissions
+import com.devstruktor.coroutinePermission.CoroutinePermissions
+import com.devstruktor.coroutinePermission.staticPermission.SuspendPermissions
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

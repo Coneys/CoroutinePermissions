@@ -1,10 +1,10 @@
-package com.devstruktor.coroutine_permission
+package com.devstruktor.coroutinePermission
 
 import androidx.fragment.app.FragmentActivity
-import com.devstruktor.coroutine_permission.activityPermission.CoroutineActivityPermissions
-import com.devstruktor.coroutine_permission.activityPermission.SuspendActivityPermissions
-import com.devstruktor.coroutine_permission.staticPermission.CoroutineStaticPermissions
-import com.devstruktor.coroutine_permission.staticPermission.SuspendPermissions
+import com.devstruktor.coroutinePermission.activityPermission.CoroutineActivityPermissions
+import com.devstruktor.coroutinePermission.activityPermission.SuspendActivityPermissions
+import com.devstruktor.coroutinePermission.staticPermission.CoroutineStaticPermissions
+import com.devstruktor.coroutinePermission.staticPermission.SuspendPermissions
 import com.devstruktor.initalizer.PermissionsInitProvider
 import com.devstruktor.nabinbhandariPermissions.Permissions
 
