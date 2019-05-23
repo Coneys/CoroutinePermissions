@@ -24,8 +24,8 @@ allprojects {
 
 ext {
 
-    publishedGroupId = 'com.devstruktor.coroutinePermissions'
-    artifact = 'coroutinePermissions'
+    publishedGroupId = 'com.devstruktor.coroutinePermission'
+    artifact = 'coroutinePermission'
     libraryName = 'CoroutinePermission'
     libraryVersion = '2.2.0'
 
