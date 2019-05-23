@@ -152,8 +152,26 @@ and into module build.gradle:
 
 ```gradle
 dependencies {
-    implementation "com.github.coneys:coroutinePermissions:{latest version}"
+	implementation 'com.github.Coneys.CoroutinePermissions:coroutine-permission:{latest version}'
 }
+```
+# Testing
+
+You should always use SuspendPermissions interface in your code, so you can always write test implementation. Also, you can add test artifact which will provide test implementation for you:
+
+```gradle
+dependencies {
+	implementation 'com.github.Coneys.CoroutinePermissions:coroutine-permission-test:{latest version}'
+}
+```
+There you can find class TestCoroutinePermission, which will return value from construtor for every permission call
+
+```
+runBlocking {
+            val locationRequest = TestCoroutinePermission(true).requestLocation()
+
+            assertEquals(true,locationRequest)
+        }
 ```
 
 # LICENSE
