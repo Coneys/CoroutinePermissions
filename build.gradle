@@ -26,7 +26,7 @@ ext {
 
     publishedGroupId = 'com.devstruktor.coroutinePermissions'
     artifact = 'coroutinePermissions'
-    libraryName = 'CoroutinePermissions'
+    libraryName = 'CoroutinePermission'
     libraryVersion = '2.2.0'
 
     libraryDescription = 'Coroutine wrapper for Android permissions'
