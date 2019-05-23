@@ -1,3 +1,6 @@
+
+[![](https://jitpack.io/v/Coneys/CoroutinePermissions.svg)](https://jitpack.io/#Coneys/CoroutinePermissions)
+
 # CoroutinePermissions
 
 CoroutinePermissions is library that allows you to ask for android runtime permissions easily. 
