@@ -24,10 +24,10 @@ allprojects {
 
 ext {
 
-    publishedGroupId = 'com.devstruktor.coroutinePermission'
+    publishedGroupId = 'com.github.coneys.coroutinePermission'
 
     libraryName = 'CoroutinePermission'
-    libraryVersion = '2.2.0'
+    libraryVersion = '2.2.6'
 
     libraryDescription = 'Coroutine wrapper for Android permissions'
 
