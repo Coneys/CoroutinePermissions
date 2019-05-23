@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-android'
 
@@ -29,6 +30,7 @@ android {
 install {
     repositories.mavenInstaller {
         pom {
+
             project {
                 packaging 'aar'
                 groupId publishedGroupId
@@ -66,8 +68,11 @@ dependencies {
 
 
 
-    implementation 'com.github.Coneys.CoroutinePermissions:coroutine-permission:2.2.7'
+    compileOnly project (path:':coroutinePermission')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
-
+}
+repositories {
+    mavenCentral()
 }

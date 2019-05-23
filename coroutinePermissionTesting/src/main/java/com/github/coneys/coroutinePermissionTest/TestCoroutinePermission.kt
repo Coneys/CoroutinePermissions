@@ -1,6 +1,6 @@
-package com.devstruktor
+package com.github.coneys.coroutinePermissionTest
 
-import com.devstruktor.coroutinePermission.staticPermission.SuspendPermissions
+import com.github.coneys.coroutinePermission.staticPermission.SuspendPermissions
 
 class TestCoroutinePermission(private val returnSuccess: Boolean) : SuspendPermissions {
     override suspend fun request(permission: String) = returnSuccess
