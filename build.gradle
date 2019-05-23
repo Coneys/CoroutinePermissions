@@ -27,7 +27,7 @@ ext {
     publishedGroupId = 'com.github.coneys.coroutinePermission'
 
     libraryName = 'CoroutinePermission'
-    libraryVersion = '2.2.6'
+    libraryVersion = '2.2.7'
 
     libraryDescription = 'Coroutine wrapper for Android permissions'
 

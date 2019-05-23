@@ -1,1 +1,1 @@
-include ':app', ':coroutine_permission',':coroutine_permission_test'
+include ':app', ':coroutinePermission', ':coroutinePermissionTesting'
