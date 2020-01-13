@@ -11,8 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
-
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by Nabin Bhandari on 7/21/2017 on 11:19 PM
@@ -79,7 +78,8 @@ internal class PermissionsActivity : Activity() {
         val rationale = intent.getStringExtra(EXTRA_RATIONALE)
         if (noRationale || TextUtils.isEmpty(rationale)) {
             Permissions.log("No rationale.")
-            requestPermissions(toArray(deniedPermissions!!),
+            requestPermissions(
+                toArray(deniedPermissions!!),
                 RC_PERMISSION
             )
             pendingRequest = true
@@ -98,7 +98,8 @@ internal class PermissionsActivity : Activity() {
     private fun showRationale(rationale: String) {
         val listener = DialogInterface.OnClickListener { dialog, which ->
             if (which == DialogInterface.BUTTON_POSITIVE) {
-                requestPermissions(toArray(deniedPermissions!!),
+                requestPermissions(
+                    toArray(deniedPermissions!!),
                     RC_PERMISSION
                 )
                 pendingRequest = true
@@ -158,7 +159,11 @@ internal class PermissionsActivity : Activity() {
                     deny()
 
                 } else { //unavailable permissions were already set not to ask again.
-                    if (permissionHandler != null && !permissionHandler!!.onBlocked(applicationContext, blockedList)) {
+                    if (permissionHandler != null && !permissionHandler!!.onBlocked(
+                            applicationContext,
+                            blockedList
+                        )
+                    ) {
                         sendToSettings()
 
                     } else
@@ -181,7 +186,8 @@ internal class PermissionsActivity : Activity() {
                     Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                     Uri.fromParts("package", packageName, null)
                 )
-                startActivityForResult(intent,
+                startActivityForResult(
+                    intent,
                     RC_SETTINGS
                 )
             }
@@ -189,7 +195,7 @@ internal class PermissionsActivity : Activity() {
             .setOnCancelListener { deny() }.create().show()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RC_SETTINGS && permissionHandler != null) {
             Permissions.check(
                 this, toArray(allPermissions!!), null, options,
